@@ -48,8 +48,11 @@
 @mixin mq($break) {  
   $value: map-get($breakpoints, $break);
   $sm: map-get($breakpoints, 'sm');            
-            
-  @if $value < $sm {
+  
+  @if $value == null {
+    @error "'#{$break}' is not a valid breakpoint name.";
+  }
+  @else if $value < $sm {
     @media (max-width: $value) {
       @content;       
     }          
@@ -61,6 +64,14 @@
   }  
 }
 
+// Colors
+@mixin themes($map) {
+  @each $theme, $color in $map {
+    &-#{$theme} {
+      color: $color;
+    }
+  }
+}
 
 
 

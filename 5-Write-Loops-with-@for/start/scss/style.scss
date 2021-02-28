@@ -2,3 +2,24 @@
 //  Loops
 // ======================================
 
+// Using "through" includes the end value
+// @for $i from 10 through 20 {
+//     .box-#{$i} {
+//         background-color: adjust-hue($color: tomato, $degrees: $i * 20);
+//     }
+// }
+
+// Using "to" does not include the end value.
+// @for $i from 10 to 20 {
+//     .box-#{$i} {
+//         background-color: adjust-hue($color: tomato, $degrees: $i * 20);
+//     }
+// }
+
+$teachers: ('andrew', 'alena', 'joel', 'danielle', 'nick');
+
+@each $teacher in $teachers {
+    .teacher-#{$teacher} {
+        background-image: url("img/#{$teacher}.jpg");
+    }
+}
